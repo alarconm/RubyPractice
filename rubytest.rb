@@ -29,3 +29,16 @@ while idx < squares.length
     puts(squares[idx])
     idx = idx + 1
 end
+
+puts("Please type MUFFIN")
+
+while true
+    input = gets.chomp
+    if input == "MUFFIN"
+        break
+    end
+
+    puts("Try typing MUFFIN again")
+end
+
+puts("Thank you for typing MUFFIN")
