@@ -1,33 +1,35 @@
-# Write a method that will take in a number of minutes, and returns a
-# string that formats the number into `hours:minutes`.
+# Write a method that takes a string and returns the number of vowels
+# in the string. You may assume that all the letters are lower cased.
+# You can treat "y" as a consonant.
 #
 # Difficulty: easy.
 
-# convert minutes to hours if > 60
-# use modulo operator to get remainder of minutes
+# define list of vowels - let's use an array
+# loop through each character of the string - add to counter for each
+# vowel that is found
 
-def time_conversion(minutes)
-  if minutes >= 60
-    hours = minutes / 60
-  else
-    hours = 0
+def count_vowels(string)
+  vowel_count = 0
+  vowels = ["a", "e", "i","o","u"]
+  i = 0
+
+  while i < string.length
+    if vowels.include?(string[i]) == true
+      vowel_count += 1
+    end
+    i += 1
   end
-
-  remainder = minutes % 60
-  if remainder < 10
-    remainder_start = 0
-    remainder = remainder_start.to_s + remainder.to_s
-  end
-
-  return hours.to_s + ":" + remainder.to_s
+  
+  return vowel_count
 end
 
 # These are tests to check that your code is working. After writing
 # your solution, they should all print true.
 
-puts("\nTests for #time_conversion")
+puts("\nTests for #count_vowels")
 puts("===============================================")
-    puts('time_conversion(15) == "0:15": ' + (time_conversion(15) == '0:15').to_s)
-    puts('time_conversion(150) == "2:30": ' + (time_conversion(150) == '2:30').to_s)
-    puts('time_conversion(360) == "6:00": ' + (time_conversion(360) == '6:00').to_s)
+    puts('count_vowels("abcd") == 1: ' + (count_vowels('abcd') == 1).to_s)
+    puts('count_vowels("color") == 2: ' + (count_vowels('color') == 2).to_s)
+    puts('count_vowels("colour") == 3: ' + (count_vowels('colour') == 3).to_s)
+    puts('count_vowels("cecilia") == 4: ' + (count_vowels('cecilia') == 4).to_s)
 puts("===============================================")
