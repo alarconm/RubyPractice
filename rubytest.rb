@@ -1,33 +1,43 @@
-# Write a method that takes a string in and returns true if the letter
-# "z" appears within three letters **after** an "a". You may assume
-# that the string contains only lowercase letters.
+# Write a method that takes an array of numbers. If a pair of numbers
+# in the array sums to zero, return the positions of those two numbers.
+# If no pair of numbers sums to zero, return `nil`.
 #
 # Difficulty: medium.
-# loop through the string until you find an a
-# when you hit a - check the index of a +1, +2, +3 for z
 
-def nearby_az(string)
+# Loop through the array, add a nested loop for each item in array
+# sum the two numbers together and check if it equals zero
+# return the index of each if it equals zero
+
+def two_sum(nums)
   i = 0
-  while i < string.length
-    if string[i] == "a"
-      if string[i + 1] == "z" || string[i + 2] == "z" || string[i + 3] == "z"
-        return true
+  
+  while i < nums.length - 1
+    k = i + 1
+
+    while k < nums.length
+      if nums[i] + nums[k] == 0
+        return [i,k]
       end
+      k += 1
     end
+
     i += 1
   end
-  return false
+
+  return nil
 end
+
+puts(two_sum([1, 3, 5, -3]))
 
 # These are tests to check that your code is working. After writing
 # your solution, they should all print true.
 
-puts("\nTests for #nearby_az")
+puts("\nTests for #two_sum")
 puts("===============================================")
-    puts('nearby_az("baz") == true: ' + (nearby_az('baz') == true).to_s)
-    puts('nearby_az("abz") == true: ' + (nearby_az('abz') == true).to_s)
-    puts('nearby_az("abcz") == true: ' + (nearby_az('abcz') == true).to_s)
-    puts('nearby_az("a") == false: ' + (nearby_az('a') == false).to_s)
-    puts('nearby_az("z") == false: ' + (nearby_az('z') == false).to_s)
-    puts('nearby_az("za") == false: ' + (nearby_az('za') == false).to_s)
+    puts(
+      'two_sum([1, 3, 5, -3]) == [1, 3]: ' + (two_sum([1, 3, 5, -3]) == [1, 3]).to_s
+    )
+    puts(
+      'two_sum([1, 3, 5]) == nil: ' + (two_sum([1, 3, 5]) == nil).to_s
+    )
 puts("===============================================")
