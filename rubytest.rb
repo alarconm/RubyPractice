@@ -1,44 +1,33 @@
-def print_three_times(name)
-    idx = 0
-    while idx < 3
-        puts (name)
-        idx = idx + 1
-    end
+# Write a method that will take in a number of minutes, and returns a
+# string that formats the number into `hours:minutes`.
+#
+# Difficulty: easy.
+
+# convert minutes to hours if > 60
+# use modulo operator to get remainder of minutes
+
+def time_conversion(minutes)
+  if minutes >= 60
+    hours = minutes / 60
+  else
+    hours = 0
+  end
+
+  remainder = minutes % 60
+  if remainder < 10
+    remainder_start = 0
+    remainder = remainder_start.to_s + remainder.to_s
+  end
+
+  return hours.to_s + ":" + remainder.to_s
 end
 
-print_three_times("Mike")
+# These are tests to check that your code is working. After writing
+# your solution, they should all print true.
 
-def first_square_numbers(number_of_squares)
-    squares = []
-
-    idx = 0
-    while idx < number_of_squares
-        squares.push(idx * idx)
-        idx = idx + 1
-    end
-
-    return squares
-end
-
-puts("How many square numbers do you want?")
-number_of_desired_squares = gets.to_i
-squares = first_square_numbers(number_of_desired_squares)
-
-idx = 0
-while idx < squares.length
-    puts(squares[idx])
-    idx = idx + 1
-end
-
-puts("Please type MUFFIN")
-
-while true
-    input = gets.chomp
-    if input == "MUFFIN"
-        break
-    end
-
-    puts("Try typing MUFFIN again")
-end
-
-puts("Thank you for typing MUFFIN")
+puts("\nTests for #time_conversion")
+puts("===============================================")
+    puts('time_conversion(15) == "0:15": ' + (time_conversion(15) == '0:15').to_s)
+    puts('time_conversion(150) == "2:30": ' + (time_conversion(150) == '2:30').to_s)
+    puts('time_conversion(360) == "6:00": ' + (time_conversion(360) == '6:00').to_s)
+puts("===============================================")
