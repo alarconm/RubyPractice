@@ -1,54 +1,37 @@
-# Write a method that takes an array of numbers. If a pair of numbers
-# in the array sums to zero, return the positions of those two numbers.
-# If no pair of numbers sums to zero, return `nil`.
+# Write a method that takes in a number and returns true if it is a
+# power of 2. Otherwise, return false.
+#
+# You may want to use the `%` modulo operation. `5 % 2` returns the
+# remainder when dividing 5 by 2; therefore, `5 % 2 == 1`. In the case
+# of `6 % 2`, since 2 evenly divides 6 with no remainder, `6 % 2 == 0`.
 #
 # Difficulty: medium.
 
-# Loop through the array, add a nested loop for each item in array
-# sum the two numbers together and check if it equals zero
-# return the index of each if it equals zero
-
-def two_sum(nums)
-  i = 0
-  
-  while i < nums.length - 1
-    k = i + 1
-
-    while k < nums.length
-      if nums[i] + nums[k] == 0
-        return [i,k]
-      end
-      k += 1
-    end
-
-    i += 1
+def is_power_of_two?(num)
+  if num < 1
+    return false
   end
 
-  return nil
-end
-
-<<<<<<< HEAD
-puts("How many square numbers do you want?")
-number_of_desired_squares = gets.chomp
-    until number_of_desired_squares.to_i.to_s == number_of_desired_squares
-        puts("you must enter an number, please try again")
-        number_of_desired_squares = gets.chomp
+  while true
+    if num == 1
+      return true
+    elsif num % 2 == 0
+      num = num / 2
+    else
+      return false
     end
-
-squares = first_square_numbers(number_of_desired_squares)
-=======
-puts(two_sum([1, 3, 5, -3]))
+  end
+end
+    
 
 # These are tests to check that your code is working. After writing
 # your solution, they should all print true.
->>>>>>> af05c75c7193057fd677404f974e4bd62c937d47
 
-puts("\nTests for #two_sum")
+puts("\nTests for #is_power_of_two?")
 puts("===============================================")
-    puts(
-      'two_sum([1, 3, 5, -3]) == [1, 3]: ' + (two_sum([1, 3, 5, -3]) == [1, 3]).to_s
-    )
-    puts(
-      'two_sum([1, 3, 5]) == nil: ' + (two_sum([1, 3, 5]) == nil).to_s
-    )
+    puts('is_power_of_two?(1) == true: ' + (is_power_of_two?(1) == true).to_s)
+    puts('is_power_of_two?(16) == true: ' + (is_power_of_two?(16) == true).to_s)
+    puts('is_power_of_two?(64) == true: ' + (is_power_of_two?(64) == true).to_s)
+    puts('is_power_of_two?(78) == false: ' + (is_power_of_two?(78) == false).to_s)
+    puts('is_power_of_two?(0) == false: ' + (is_power_of_two?(0) == false).to_s)
 puts("===============================================")
