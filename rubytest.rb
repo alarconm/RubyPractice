@@ -21,7 +21,12 @@ def first_square_numbers(number_of_squares)
 end
 
 puts("How many square numbers do you want?")
-number_of_desired_squares = gets.to_i
+number_of_desired_squares = gets.chomp
+    until number_of_desired_squares.to_i.to_s == number_of_desired_squares
+        puts("you must enter an number, please try again")
+        number_of_desired_squares = gets.chomp
+    end
+
 squares = first_square_numbers(number_of_desired_squares)
 
 idx = 0
